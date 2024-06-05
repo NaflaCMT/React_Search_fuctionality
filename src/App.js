@@ -39,19 +39,14 @@ export class App extends Component {
           className="searchBox"
           onChange={this.onSearchChange}
         />
-        <input
-          type="number"
-          placeholder="Ender 1 to 5"
-          className="number"
-          onChange={this.onImageChange}
-        />
+
         <div className="card-list">
           {filteredUser.map((user) => (
             <div className="card-container" key={user}>
               {console.log(user.id)}
               <div>
                 <img
-                  src={`https://robohash.org/${user.id}?set=set${this.state.imagefield}`}
+                  src={`https://robohash.org/${user.id}?set=set2`}
                   className="img"
                 />
               </div>
