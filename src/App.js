@@ -6,7 +6,7 @@ export class App extends Component {
     this.state = {
       users: [],
       searchField: "",
-      imagefield: 3,
+      imagefield: 0,
     };
   }
   componentDidMount() {
@@ -24,6 +24,13 @@ export class App extends Component {
       return { searchField: searchData };
     });
   };
+  onImageChange = (event) => {
+    const ImageData = event.target.value;
+    this.setState(() => {
+      return { imagefield: ImageData };
+    });
+  };
+
   render() {
     console.log(this.state.users);
     const filteredUser = this.state.users.filter((user) => {
@@ -39,6 +46,12 @@ export class App extends Component {
           className="searchBox"
           onChange={this.onSearchChange}
         />
+        <input
+          type="number"
+          placeholder="Enter a number to change images"
+          className="number"
+          onChange={this.onImageChange}
+        />
 
         <div className="card-list">
           {filteredUser.map((user) => (
@@ -46,7 +59,7 @@ export class App extends Component {
               {console.log(user.id)}
               <div>
                 <img
-                  src={`https://robohash.org/${user.id}?set=set2`}
+                  src={`https://robohash.org/${user.id}?set=set${this.state.imagefield}`}
                   className="img"
                 />
               </div>
